@@ -14,7 +14,11 @@ $(function(){
 
     $(".button-collapse").sideNav();
 
-    $(".scrollSpy").scrollSpy();
+    $(".scrollSpy").scrollSpy({
+        scrollOffset: 60
+    });
+
+    $("select.material-select").material_select();
 
     $("#nav-mobile").find("li").find("a").click(function() {
         $('.button-collapse').sideNav('hide');
@@ -45,6 +49,13 @@ $(function(){
         } else {
             floatingScrollBtn.fadeOut("fast");
         }
+
+        if(document.body.scrollTop > 80 && $("#header").hasClass("top-pos")) {
+            $("#header").removeClass("top-pos");
+        } else if(document.body.scrollTop <= 80 && !$("#header").hasClass("top-pos")) {
+            $("#header").addClass("top-pos");
+        }
+
     });
     onScroll();
 });
